@@ -1,5 +1,5 @@
 extends:
-  file: ../javascript/pipeline.yaml
+  file: ../leap-node10/pipeline.yaml
 agent:
   label: jenkins-nodejs
   container: nodejs
