@@ -1,6 +1,6 @@
 extends:
   import: classic
-  file: javascript/pipeline.yaml
+  file: leap-node10/pipeline.yaml
 pipelines:
   pullRequest:
     build:
