@@ -1,0 +1,6 @@
+extends:
+  file: ../leap-node10/pipeline.yaml
+agent:
+  label: jenkins-nodejs
+  container: nodejs
+
