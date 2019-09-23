@@ -36,5 +36,19 @@ pipelines:
         - comment: release the helm chart
           sh: jx step helm release
           name: helm-release
-        - sh: CLOUDSDK_CORE_DISABLE_PROMPTS=1 gcloud beta run deploy $APP_NAME --image=$DOCKER_REGISTRY/$(gcloud config get-value project)/$APP_NAME:$PREVIEW_VERSION --platform=managed
-          name: deploy-to-cloud-run
+        - name: deploy-to-cloud-run
+          command: gcloud
+          args:
+            - --quiet
+            - components
+            - update
+            - " && "
+            - gcloud
+            - --quiet
+            - beta
+            - run
+            - deploy
+            - $APP_NAME
+            - --image=$DOCKER_REGISTRY/$(gcloud config get-value project)/$APP_NAME:$PREVIEW_VERSION
+            - --region=us-central1
+            - --platform=managed

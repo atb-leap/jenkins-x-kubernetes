@@ -3,4 +3,3 @@ extends:
 agent:
   label: jenkins-nodejs
   container: nodejs
-
