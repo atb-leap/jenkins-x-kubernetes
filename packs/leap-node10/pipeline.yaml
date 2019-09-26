@@ -40,6 +40,7 @@ pipelines:
           command: gcloud
           args:
             - --quiet
+            - --no-user-output-enabled
             - components
             - update
             - " && "
