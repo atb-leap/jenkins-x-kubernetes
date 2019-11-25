@@ -1,0 +1,10 @@
+Dockerfile
+.dockerignore
+__pycache__
+.pytest_cache
+venv
+draft.toml
+charts/
+NOTICE
+LICENSE
+README.md
