@@ -36,7 +36,7 @@ pipelines:
         - comment: release the helm chart
           sh: jx step helm release
           name: helm-release
-        - comment: which helm
+        - comment: which-helm-am-i-using
           sh: helm3 version
         - name: deploy-to-cloud-run
           command: gcloud
