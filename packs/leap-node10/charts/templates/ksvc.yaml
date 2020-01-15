@@ -15,8 +15,8 @@ spec:
       revisionTemplate:
         spec:
           container:
-            image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
-            imagePullPolicy: {{ .Values.image.pullPolicy }}
+            image: "{{ .Values.image.repository }}"
+            imagePullPolicy: Always
             env:
 {{- range $pkey, $pval := .Values.env }}
             - name: {{ $pkey }}

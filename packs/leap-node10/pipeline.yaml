@@ -1,6 +1,16 @@
 extends:
   import: classic
   file: javascript/pipeline.yaml
+pipelineConfig:
+  pipelines:
+    overrides:
+    - name: npm-install
+      stage: build
+      steps:
+      - command: yarn install
+        dir: /workspace/source
+        image: nodejs
+        name: yarn-install
 pipelines:
   pullRequest:
     build:
@@ -36,20 +46,5 @@ pipelines:
         - comment: release the helm chart
           sh: jx step helm release
           name: helm-release
-        - name: deploy-to-cloud-run
-          command: gcloud
-          args:
-            - --quiet
-            - --no-user-output-enabled
-            - components
-            - update
-            - " && "
-            - gcloud
-            - --quiet
-            - beta
-            - run
-            - deploy
-            - $APP_NAME
-            - --image=$DOCKER_REGISTRY/$(gcloud config get-value project)/$APP_NAME:$PREVIEW_VERSION
-            - --region=us-central1
-            - --platform=managed
+        - command: gcloud container images add-tag $DOCKER_REGISTRY/$ORG/$APP_NAME:\$(cat VERSION) $DOCKER_REGISTRY/$ORG/$APP_NAME:latest
+          name: update-latest-tag
