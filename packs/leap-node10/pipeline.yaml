@@ -4,6 +4,7 @@ extends:
 pipelineConfig:
   pipelines:
     overrides:
+    # Override npm with yarn
     - name: npm-install
       stage: build
       steps:
@@ -11,6 +12,13 @@ pipelineConfig:
         dir: /workspace/source
         image: nodejs
         name: yarn-install
+    - name: npm-test
+      stage: build
+      steps:
+      - command: CI=true DISPLAY=:99 yarn test
+        dir: /workspace/source
+        image: nodejs
+        name: yarn-test
 pipelines:
   pullRequest:
     build:
