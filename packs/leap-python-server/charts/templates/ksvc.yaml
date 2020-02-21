@@ -34,6 +34,7 @@ spec:
                 path: {{ .Values.probePath }}
               periodSeconds: {{ .Values.readinessProbe.periodSeconds }}
               successThreshold: {{ .Values.readinessProbe.successThreshold }}
+              failureThreshold: {{ .Values.readinessProbe.failureThreshold }}
               timeoutSeconds: {{ .Values.readinessProbe.timeoutSeconds }}
             resources:
 {{ toYaml .Values.resources | indent 14 }}
