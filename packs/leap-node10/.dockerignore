@@ -1,5 +1,6 @@
 draft.toml
 charts/
+node_modules/
 NOTICE
 LICENSE
 README.md
