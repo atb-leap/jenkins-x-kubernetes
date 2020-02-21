@@ -36,5 +36,5 @@ pipelines:
         - comment: release the helm chart
           sh: jx step helm release
           name: helm-release
-        - command: gcloud container images add-tag $DOCKER_REGISTRY/$ORG/$APP_NAME:\$(cat VERSION) $DOCKER_REGISTRY/$ORG/$APP_NAME:latest
+        - command: gcloud container images add-tag $DOCKER_REGISTRY/leap-0123/$APP_NAME:\$(cat VERSION) $DOCKER_REGISTRY/leap-0123/$APP_NAME:latest
           name: update-latest-tag
