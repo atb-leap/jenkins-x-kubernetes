@@ -19,10 +19,8 @@ service:
   externalPort: 80
   internalPort: 8080
   annotations:
-    certmanager.k8s.io/issuer-kind: ClusterIssuer
-    certmanager.k8s.io/issuer-name: letsencrypt-prod-cluster
     fabric8.io/expose: "true"
-    fabric8.io/ingress.annotations: "kubernetes.io/ingress.class: nginx"
+    fabric8.io/ingress.annotations: 'kubernetes.io/ingress.class: nginx\ncertmanager.k8s.io/issuer-name: letsencrypt-prod-cluster\ncertmanager.k8s.io/issuer-kind: ClusterIssuer'
 resources:
   limits:
     cpu: 400m
