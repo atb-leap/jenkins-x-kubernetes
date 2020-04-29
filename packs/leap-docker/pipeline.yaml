@@ -24,6 +24,13 @@ pipelines:
               name: jx-preview
 
   release:
+    setVersion:
+      steps:
+        - comment: so we can retrieve the version in later steps
+          name: next-version
+          sh: echo \$(jx-release-version) > VERSION
+        - name: tag-version
+          sh: jx step tag --version \$(cat VERSION)
     build:
       steps:
         - sh: export VERSION=`cat VERSION` && skaffold build -f skaffold.yaml
